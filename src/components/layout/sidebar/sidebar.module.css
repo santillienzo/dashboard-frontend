@@ -1,0 +1,65 @@
+.sidebar {
+    background-color: #f9f9f9;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.logoContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+}
+
+
+.principalLinks{
+    flex: 1
+}
+
+.otherLinks {
+    border-top: 1px solid #0f0f0f;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    padding-left: 5px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.linkText{
+    width: 70%;
+
+}
+
+.linkItem:hover{
+    background-color: var(--background-color);
+    color: #EB4335;
+}
+
+.linkItem .linkIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkItem:hover .linkText {
+    border-bottom: 1px solid #EB4335;
+}
+
+.itemSelected .linkText{
+    color: #EB4335;
+    border-bottom: 1px solid #EB4335;
+}
+
+@media (max-width: 768px) {
+    .sidebar{
+        display: none;
+    }
+}
