@@ -1,6 +1,7 @@
 import { IconHome } from '@tabler/icons-react';
-import style from './sidebar.module.css'
 import { IconArchive, IconBuilding, IconCalendarMonth, IconChartPie, IconCreditCard, IconPhone, IconSettings, IconUserCircle } from '@tabler/icons-react'
+// import { useNavigate } from 'react-router-dom';
+import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 
 interface ILinkItem {
   title: string;
@@ -66,43 +67,74 @@ const otherLinks: ILinkItem[] = [
   }
 ]
 
-const LinkItem = ({title, icon, selected}: ILinkItem)=>{
-  return (
-    <li className={`${style.linkItem} ${selected && style.itemSelected}`}>
-      <span className={style.linkIcon}>{icon}</span>
-      <span className={style.linkText}>{title}</span>
-    </li>
-  )
-}
-
 const Sidebar = () => {  
   return (
-    <nav className={style.sidebar}>
-      <div className={style.logoContainer}>
-        {/* <img src={logo} alt="logo" className={style.logo} /> */}
-        <h5>Logo Empresa</h5>
-      </div>
-      <ul className={style.principalLinks}>
-        {
-          links.map((link, i) =>(
-            <LinkItem 
-              key={i} 
-              title={link.title} 
-              icon={link.icon} 
-              path={link.path}
-              selected={link.selected}
-            />
-          ))
-        }
-      </ul>
-      <ul className={style.otherLinks}>
-        {
-          otherLinks.map((link,i) =>(
-            <LinkItem key={i} title={link.title} icon={link.icon} path={link.path}/>
-          ))
-        }
-      </ul>
-    </nav>
+    <Drawer
+      sx={{
+        width: 200,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: 200,
+          boxSizing: 'border-box',
+        },
+      }}
+      variant="permanent"
+      anchor="left"
+    >
+      <Toolbar />
+      <Divider />
+      <List>
+        {links.map((link, index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {link.icon}
+              </ListItemIcon>
+              <ListItemText primary={link.title} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {otherLinks.map((link, index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {link.icon}
+              </ListItemIcon>
+              <ListItemText primary={link.title} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
+    // <nav className={style.sidebar}>
+    //   <div className={style.logoContainer}>
+    //     {/* <img src={logo} alt="logo" className={style.logo} /> */}
+    //     <h5>Logo Empresa</h5>
+    //   </div>
+    //   <ul className={style.principalLinks}>
+    //     {
+    //       links.map((link, i) =>(
+    //         <LinkItem 
+    //           key={i} 
+    //           title={link.title} 
+    //           icon={link.icon} 
+    //           path={link.path}
+    //           selected={link.selected}
+    //         />
+    //       ))
+    //     }
+    //   </ul>
+    //   <ul className={style.otherLinks}>
+    //     {
+    //       otherLinks.map((link,i) =>(
+    //         <LinkItem key={i} title={link.title} icon={link.icon} path={link.path}/>
+    //       ))
+    //     }
+    //   </ul>
+    // </nav>
   )
 }
 

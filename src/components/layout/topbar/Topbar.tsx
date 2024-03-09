@@ -1,33 +1,48 @@
-import style from './Topbar.module.css'
-import { IconBellFilled, IconMenu2, IconUserFilled } from '@tabler/icons-react'
+import { AppBar, Badge, Box, IconButton, Toolbar, Typography } from '@mui/material';
+// import style from './Topbar.module.css'
+import { IconBellFilled, IconUserFilled } from '@tabler/icons-react'
 
-const notificationValue = 4;
+// const notificationValue = 4;
 
 const Topbar = () => {
   return (
-    <header className={style.navbar}>
-      {/* Este elemento solo se va a mostrar cuando nos encontremos en pantallas menores a 768px */}
-      <div className={style.toggleMenu}>
-        <IconMenu2/>
-      </div>
-      <div className={style.userActionsContainer}>
-        <h2 className={style.titlePage}>Sitios</h2>
-        <div className={style.userActionsIcons}>
-          <div className={style.actionsIcons}>
-            <span className={style.icon}>
-              <IconBellFilled size={28}/>
-              <span 
-                className={style.badge} 
-                style={{display: notificationValue > 0 ? 'flex' : 'none'}}
-              >{notificationValue}</span>
-            </span>
-            <span className={style.icon}>
-              <IconUserFilled size={28}/>
-            </span>
-          </div>
-        </div>
-      </div>
-    </header>
+    <AppBar
+      position="fixed"
+      color='transparent'
+      elevation={0}
+      sx={{ 
+        width: `calc(100% - ${200}px)`, 
+        ml: `${200}px`, 
+        borderBottom: 1, 
+        borderColor: 'grey.300'
+      }}
+    >
+    <Toolbar
+      sx={{
+        display: 'flex',
+        justifyContent:'space-between',
+        alignItems: 'center',
+      }}
+    >
+      <Typography variant="h6" noWrap component="div" sx={{flex:1}}>
+        Inicio
+      </Typography>
+      <Box sx={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1
+      }}>
+        <IconButton>
+          <Badge badgeContent={1} color='error'>
+            <IconBellFilled/>
+          </Badge>
+        </IconButton>
+        <IconButton>
+            <IconUserFilled/>
+        </IconButton>
+      </Box>
+    </Toolbar>
+  </AppBar>
   )
 }
 
