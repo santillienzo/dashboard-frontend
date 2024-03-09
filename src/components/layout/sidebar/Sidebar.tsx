@@ -1,5 +1,6 @@
+import { IconHome } from '@tabler/icons-react';
 import style from './sidebar.module.css'
-import { IconArchive, IconBorderAll, IconBuilding, IconCalendarMonth, IconChartPie, IconCreditCard, IconPhone, IconSettings, IconUserCircle } from '@tabler/icons-react'
+import { IconArchive, IconBuilding, IconCalendarMonth, IconChartPie, IconCreditCard, IconPhone, IconSettings, IconUserCircle } from '@tabler/icons-react'
 
 interface ILinkItem {
   title: string;
@@ -10,15 +11,20 @@ interface ILinkItem {
 
 const links: ILinkItem[] = [
   {
-    title: 'Panel',
+    title: 'Inicio',
     path: '/',
-    icon: <IconBorderAll />
+    icon: <IconHome />,
+    selected: true
   },
   {
-    title: 'Sitios',
-    path: '/sitios',
+    title: 'Empresa',
+    path: '/empresa',
+    icon: <IconBuilding />
+  },
+  {
+    title: 'Productos',
+    path: '/productos',
     icon: <IconArchive />,
-    selected: true
   },
   {
     title: 'Calendario',
@@ -31,17 +37,17 @@ const links: ILinkItem[] = [
     icon: <IconUserCircle />
   },
   {
-    title: 'Compañía',
-    path: '/compañia',
-    icon: <IconBuilding />
-  },
-  {
     title: 'Pagos',
     path: '/pagos',
     icon: <IconCreditCard />
   },
   {
     title: 'Reportes',
+    path: '/reportes',
+    icon: <IconChartPie />
+  },
+  {
+    title: 'Mercado Pago',
     path: '/reportes',
     icon: <IconChartPie />
   }
@@ -69,7 +75,7 @@ const LinkItem = ({title, icon, selected}: ILinkItem)=>{
   )
 }
 
-const Sidebar = () => {
+const Sidebar = () => {  
   return (
     <nav className={style.sidebar}>
       <div className={style.logoContainer}>
